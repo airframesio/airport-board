@@ -1,0 +1,120 @@
+html
+  head
+    title= title
+    link(rel="stylesheet" href="/css/base.css")
+    link(rel="stylesheet" href="/plugins/arrivals/custom.css")
+  body
+    div(id="board" class="chartContainer splitflap" style="text-align: center;")
+      h1 Arrivals to #{airport}
+
+      div(class="header" style="width:120px;margin-left:0px;") Airline
+      div(class="header" style="width:160px;margin-left:40px;") Flight
+      div(class="header" style="width:360px;margin-left:70px;text-align:left;") Origin
+      div(class="header" style="width:90px;margin-left:30px;") Term
+      div(class="header" style="width:90px;margin-left:30px;") Gate
+      div(class="header" style="width:135px;margin-left:30px;") Scheduled
+      div(class="header" style="width:290px;margin-left:30px;text-align:left;") Remarks
+
+    script(type="text/template" id="row_template")
+      div(class="row")
+        div(class="group airline")
+          div(class="image")
+            span
+        div(class="group flight")
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+        div(class="group city")
+          div(class="character")
+            span
+          div(class="character")
+            span
+          div(class="character")
+            span
+          div(class="character")
+            span
+          div(class="character")
+            span
+          div(class="character")
+            span
+          div(class="character")
+            span
+          div(class="character")
+            span
+          div(class="character")
+            span
+          div(class="character")
+            span
+          div(class="character")
+            span
+          div(class="character")
+            span
+        div(class="group terminal")
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+        div(class="group gate")
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+        div(class="group scheduled")
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="separator") :
+          div(class="full")
+            span
+          div(class="full")
+            span
+        div(class="group remarks")
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+          div(class="full")
+            span
+        div(class="group status")
+          div(class="sA")
+          div(class="sB")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js")
+    script.
+      const airframesData = !{JSON.stringify(airframesData)};
+    script(type="text/javascript" src="/js/split-flap.js")
+    script(type="text/javascript" src="/plugins/arrivals/custom.js")
+    script(type="text/javascript" src="/plugins/common.js")

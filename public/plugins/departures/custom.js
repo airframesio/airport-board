@@ -27,7 +27,7 @@ sf.plugins.arrivals = {
   dataType: 'json',
 
   url: function(options) {
-    return '/api/airport/' + options.airframesData.airport + '/arrivals';
+    return '/api/airport/' + options.airframesData.airport + '/departures';
   },
 
   formatData: function(response) {

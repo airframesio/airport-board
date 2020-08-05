@@ -7,6 +7,11 @@
   "author": "Pete Butler <pbutler@basdesign.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.4"
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.4",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
+    "pug": "^3.0.0"
   }
 }

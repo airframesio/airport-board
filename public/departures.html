@@ -10,14 +10,15 @@
     <!-- ============================================ -->
     <!-- CONTAINER -->
     <div id="board" class="chartContainer splitflap">
-      <h1>Arrivals at KMHR</h1>
+      <h1>Departures from KSMF</h1>
 
       <!-- Header: 30px/char, 15px/separator, 120px/logo -->
       <div class="header" style="width:120px;margin-left:0px;">Airline</div>
       <div class="header" style="width:160px;margin-left:40px;">Flight</div>
       <div class="header" style="width:360px;margin-left:70px;text-align:left;">
-        Origin
+        Destination
       </div>
+      <div class="header" style="width:90px;margin-left:30px;">Term</div>
       <div class="header" style="width:90px;margin-left:30px;">Gate</div>
       <div class="header" style="width:135px;margin-left:30px;">Scheduled</div>
       <div class="header" style="width:290px;margin-left:30px;text-align:left;">
@@ -58,6 +59,11 @@
           <div class="character"><span></span></div>
           <div class="character"><span></span></div>
           <div class="character"><span></span></div>
+        </div>
+        <div class="group terminal">
+          <div class="full"><span></span></div>
+          <div class="full"><span></span></div>
+          <div class="full"><span></span></div>
         </div>
         <div class="group gate"> <!-- gate -->
           <div class="full"><span></span></div>
@@ -111,7 +117,7 @@
 
     <!-- ============================================ -->
     <!-- CUSTOM JS FOR THIS BOARD -->
-    <script type="text/javascript" src="plugins/arrivals/custom.js"></script>
+    <script type="text/javascript" src="plugins/departures/custom.js"></script>
     <script type="text/javascript">
       // CUSTOMIZATION OPTIONS
       sf.options = {
@@ -119,14 +125,14 @@
         plugin: 'arrivals', // Plugin to load
         container: $('#board'), // Where in the DOM to put the board
         template: $('#row_template'), // Where in the DOM to find the row template
-        numRows: 12, // number of rows
+        numRows: 13, // number of rows
 
         // OPTIONAL
-        sort: 'scheduled', // the column to sort by
+        sort: 'timeString', // the column to sort by
         order: 'asc', // the order to sort by
         maxResults: 24, // number of items to retrieve from service
         pageInterval: 30000, // delay between pages (ms)
-        stagger: 2000 // delay between loading rows (ms)
+        stagger: 1500 // delay between loading rows (ms)
       };
 
       $(document).ready(function() {
