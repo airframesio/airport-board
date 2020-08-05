@@ -1,5 +1,5 @@
 Copyright (c) 2019 Pete Butler, http://pete.basdesign.com/
-Copyright (c) 2019 Pete Airframes, https://airframes.io/
+Copyright (c) 2020 Airframes, https://airframes.io/
 Copyright (c) 2020 Kevin Elliott, http://kevinelliott.net/
 
 Permission is hereby granted, free of charge, to any person obtaining
