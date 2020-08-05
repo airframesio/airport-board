@@ -16,7 +16,6 @@
     "pug": "^3.0.0"
   },
   "scripts": {
-    "build": "node app.js",
     "start": "node app.js",
     "test": "standard"
   }
