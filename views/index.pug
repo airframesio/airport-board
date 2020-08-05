@@ -1,0 +1,30 @@
+html
+  head
+    title= title
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous")
+    link(rel="stylesheet" href="/css/base.css")
+    link(rel="stylesheet" href="/plugins/arrivals/custom.css")
+  body
+    div(id="board" style="margin: auto; width: 800px; text-align: center;")
+      h1 Airport Solari Board
+      p(style="text-align: justify;").
+        This is a virtual Airport Arrivals/Depatures board, in style of Solari or Split-Flap mechanical displays. You can see
+        scheduled arriving and departing flights from your local airport, as well as cancellations and delays. We are currently
+        using an API feed from AviationStack with a very limited number of allowed requests, so this system will undoubtedly
+        break after a few days each month until we come up with another solution.
+      h3 Example Boards
+      div(class="w-100" style="margin-bottom: 20px; padding: 5px; border: 1px solid #666;")
+        h4(class="pull-left") KSFO - San Francisco International Airport
+        div(class="text-right")
+          a(href="/airports/KSFO/arrivals" class="btn btn-primary" target="_blank") ARRIVALS
+          a(href="/airports/KSFO/departures" class="btn btn-primary" style="margin-left: 10px;" target="_blank") DEPARTURES
+      div(class="w-100" style="margin-bottom: 20px; padding: 5px; border: 1px solid #666;")
+        h4(class="pull-left") KSMF - Sacramento International Airport
+        div(class="text-right")
+          a(href="/airports/KSMF/arrivals" class="btn btn-primary" target="_blank") ARRIVALS
+          a(href="/airports/KSMF/departures" class="btn btn-primary" style="margin-left: 10px;" target="_blank") DEPARTURES
+      div(class="w-100" style="margin-bottom: 20px; padding: 5px; border: 1px solid #666;")
+        h4(class="pull-left") KSJC - San Jose International Airport
+        div(class="text-right")
+          a(href="/airports/KSJC/arrivals" class="btn btn-primary" target="_blank") ARRIVALS
+          a(href="/airports/KSJC/departures" class="btn btn-primary" style="margin-left: 10px;" target="_blank") DEPARTURES

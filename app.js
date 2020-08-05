@@ -236,25 +236,6 @@ function fetchFromLaminar(airport, type, userKey) {
 // ========================================================================
 // API
 
-app.use('/api/arrivals', async (req, res) => {
-  let r = {
-    data: []
-  };
-
-  r.data = await fetchFromLaminar('KMHR', 'arrivals', laminarUserKey);
-  console.log(r);
-  res.json(r);
-});
-
-app.use('/api/departures', async (req, res) => {
-  let r = {
-    data: []
-  };
-
-  r.data = await fetchFromLaminar('KMHR', 'departures', laminarUserKey);
-  res.json(r);
-});
-
 app.use('/api/airport/:airport/arrivals', async (req, res) => {
   let r = {
     data: []
@@ -298,6 +279,10 @@ app.get('/airports/:airport/departures', function (req, res) {
     airframesData: airframesData
   });
 })
+
+app.get('/', function (req, res) {
+  res.render('index', { title: 'Airport Board' });
+});
 
 // ========================================================================
 // STATIC FILES
