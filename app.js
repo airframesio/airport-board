@@ -3,17 +3,6 @@ const moment = require('moment-timezone');
 const express = require('express'), app = express();
 require('dotenv').config();
 
-const Airbrake = require('@airbrake/node');
-const airbrakeExpress = require('@airbrake/node/dist/instrumentation/express');
-
-const airbrake = new Airbrake.Notifier({
-  projectId: 286016,
-  projectKey: 'a89540f93906f38040754b535b6484c7',
-});
-
-app.use(airbrakeExpress.makeMiddleware(airbrake));
-app.use(airbrakeExpress.makeErrorHandler(airbrake));
-
 const port = process.env.PORT || 8080;
 const aviationStackAccessKey = process.env.AVIATION_STACK_ACCESS_KEY;
 const laminarUserKey = process.env.LAMINAR_USER_KEY;

@@ -49,7 +49,7 @@ sf.board = {
     let board = new sf.Board();
     board.el = options.container;
     board.template = _.template(options.template.html());
-    sf.options.numRows = sf.options.numRows ? sf.options.numRows : 12; // default 12 rows
+    sf.options.numRows = sf.options.numRows ? sf.options.numRows : 6; // default 6 rows
     board.render();
   },
 
