@@ -7,6 +7,10 @@ const port = process.env.PORT || 8080;
 const aviationStackAccessKey = process.env.AVIATION_STACK_ACCESS_KEY;
 const laminarUserKey = process.env.LAMINAR_USER_KEY;
 
+function addHoursToDate(date, hours) {
+  return new Date(new Date(date).setHours(date.getHours() + hours));
+}
+
 function fetchFromAviationStack(airport, type, accessKey) {
   var axios = require('axios');
   let results = [];
@@ -16,26 +20,29 @@ function fetchFromAviationStack(airport, type, accessKey) {
     method: 'get',
     url: 'http://api.aviationstack.com/v1/flights?access_key=' + accessKey + '&' + airportFilter
   };
-  console.log(config.url);
+  var now = new Date();
+  console.log(now.toUTCString() + ": " + config.url);
 
   return axios(config)
     .then(function (response) {
       // console.log(JSON.stringify(response.data));
 
+      var now = new Date();
+      var TimeLimit = addHoursToDate(now,8)
       let items;
       if (type == 'arrivals') {
         items = response.data.data.filter(function(item) {
-          return item.flight_status != 'landed';
+          return item.flight_status != 'landed' && (item.arrival.scheduled >  now && item.arrival.scheduled < TimeLimit);
         });
       } else {
         items = response.data.data.filter(function(item) {
-          return item.flight_status != 'landed' && !(item.flight_status == 'active' && item.departure.actual)
+          return item.flight_status != 'landed' && !(item.flight_status == 'active' && item.departure.actual) && (Date.parse(item.departure.scheduled) > Date.parse(now) && Date.parse(item.departure.scheduled) < Date.parse(TimeLimit))
         });
       }
 
       for (let i = 0; i < items.length; i++) {
         var item = items[i];
-        console.log(item);
+        //console.log(item);
 
         var airline = item.airline.icao;
         var time = '????';
@@ -134,7 +141,7 @@ function fetchFromLaminar(airport, type, userKey) {
 
   return axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
+      //console.log(JSON.stringify(response.data));
 
       for (let i = 0; i < response.data.features.length; i++) {
         var item = response.data.features[i];
