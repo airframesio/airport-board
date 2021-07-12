@@ -27,3 +27,5 @@ node app.js
 ```
 Navigate to `http://locahost:8080` in your browser.
 
+## Screenshot
+![Screenshot](thumbnail.png)
