@@ -1,0 +1,21 @@
+{
+    "name": "airport-solari-board",
+    "version": "2.0.0",
+    "description": "Airport Solari Board",
+    "main": "app.js",
+    "repository": "https://github.com/bzyg7b/airport-solari-board.git",
+    "author": "Bigsby",
+    "license": "MIT",
+    "dependencies": {
+      "axios": "^0.19.2",
+      "dotenv": "^8.2.0",
+      "express": "^4.16.4",
+      "moment": "^2.27.0",
+      "moment-timezone": "^0.5.31",
+      "pug": "^3.0.0"
+    },
+    "scripts": {
+      "start": "node app.js",
+      "test": "standard"
+    }
+  }
