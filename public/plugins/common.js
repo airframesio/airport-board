@@ -10,7 +10,7 @@ sf.options = {
   sort: 'timeString',  // the column to sort by
   order: 'asc',        // the order to sort by
   maxResults: 26,      // number of items to retrieve from service
-  pageInterval: 60000, // delay between pages (ms)
+  pageInterval: 30000, // delay between pages (ms)
   stagger: 1500,       // delay between loading rows (ms)
 
   // PASS DATA TO FRONTEND UI

@@ -28,15 +28,16 @@ function fetchFromAviationStack(airport, type, accessKey) {
       // console.log(JSON.stringify(response.data));
 
       var now = new Date();
-      var TimeLimit = addHoursToDate(now,8)
+      var kordtime = addHoursToDate(now,-6)
+      var TimeLimit = addHoursToDate(kordtime,2)
       let items;
       if (type == 'arrivals') {
         items = response.data.data.filter(function(item) {
-          return item.flight_status != 'landed' && (item.arrival.scheduled >  now && item.arrival.scheduled < TimeLimit);
+          return (item.flight_status != 'landed') && (item.arrival.scheduled >  kordtime) && (item.arrival.scheduled < TimeLimit);
         });
       } else {
         items = response.data.data.filter(function(item) {
-          return item.flight_status != 'landed' && !(item.flight_status == 'active' && item.departure.actual) && (Date.parse(item.departure.scheduled) > Date.parse(now) && Date.parse(item.departure.scheduled) < Date.parse(TimeLimit))
+          return item.flight_status != 'landed' && !(item.flight_status == 'active' && item.departure.actual) && (Date.parse(item.departure.scheduled) > Date.parse(kordtime)) && (Date.parse(item.departure.scheduled) < Date.parse(TimeLimit))
         });
       }
 

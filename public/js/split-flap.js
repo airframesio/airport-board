@@ -107,6 +107,7 @@ sf.Items = Backbone.Collection.extend({
 
         let i = 0,
           page = 0;
+          lap = 0;
 
         // Load initial results
         sf.display.loadSequentially(
@@ -130,6 +131,7 @@ sf.Items = Backbone.Collection.extend({
               paginate(i);
             } else {
               setTimeout(() => {
+              // calls the API again after all the pages have been displayed 
                 items.update(options);
               }, pageInterval);
             }
