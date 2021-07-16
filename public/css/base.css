@@ -363,3 +363,19 @@ a {
 .splitflap .character span.ccom {
   background-position: -975px 0px;
 } /* , */
+.pagination{
+  width:100%;
+  text-align:center;
+}
+.pagination span {
+  margin: 4px;
+  padding: 6px 12px;
+}
+.pagination span.currentPage {  
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+.pagination span.totalPage {  
+  color:#337ab7;
+  border:0.5px solid;
+}

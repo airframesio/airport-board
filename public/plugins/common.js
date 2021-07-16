@@ -12,6 +12,7 @@ sf.options = {
   maxResults: 26,      // number of items to retrieve from service
   pageInterval: 30000, // delay between pages (ms)
   stagger: 1500,       // delay between loading rows (ms)
+  pagination:$('.pagination'),
 
   // PASS DATA TO FRONTEND UI
   airframesData: airframesData

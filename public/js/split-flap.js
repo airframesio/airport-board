@@ -108,18 +108,34 @@ sf.Items = Backbone.Collection.extend({
         let i = 0,
           page = 0;
           lap = 0;
+          apiCallInterval = 0;
 
+        options.pagination.find('.totalPage').text(numPages);
         // Load initial results
         sf.display.loadSequentially(
           results.slice(i, i + numRows),
           options.container
         );
+        console.log('numRows',numRows)
         i += numRows;
         page++;
+        console.log('iiii',i)
+        console.log('page',page)
         // This recursive function loops through the results by page
         // After it's finished the last page it updates the items
         // and renders a new page.
         function paginate() {
+
+          // Add PageInteval to get API Call Interval - 1 hours
+          apiCallInterval += pageInterval
+          console.log('API Interval', apiCallInterval)
+          var hours = apiCallInterval / (1000*60*60)
+          let minutes = (apiCallInterval / (1000 * 60)).toFixed(1);
+          console.log('Hours', hours)
+          console.log('Minutes', minutes)
+          options.pagination.find('.currentPage').text(page);
+
+          console.log('current Page', page)
           setTimeout(() => {
             sf.display.loadSequentially(
               results.slice(i, i + numRows),
@@ -130,10 +146,23 @@ sf.Items = Backbone.Collection.extend({
             if (page < numPages) {
               paginate(i);
             } else {
-              setTimeout(() => {
-              // calls the API again after all the pages have been displayed 
-                items.update(options);
-              }, pageInterval);
+
+              if(minutes >= 60)
+              {
+                console.log('minutes exist')
+                options.pagination.find('.currentPage').text(page);
+                setTimeout(() => {
+                  // calls the API again after all the pages have been displayed 
+                  items.update(options);
+                }, pageInterval);           
+              }
+              else
+              {
+                console.log('last Page call', page)
+                options.pagination.find('.currentPage').text(page);
+                if (page > numPages) page = 1
+                paginate()
+              }            
             }
           }, pageInterval);
         }
