@@ -105,23 +105,20 @@ sf.Items = Backbone.Collection.extend({
           numPages = Math.ceil(numResults / numRows),
           pageInterval = options.pageInterval || 30000;
 
-        console.log('total data', results.length)
         let i = 0,
           page = 0;
           lap = 0;
           apiCallInterval = 0;
 
         options.pagination.find('.totalPage').text(numPages);
+        
         // Load initial results
         sf.display.loadSequentially(
           results.slice(i, i + numRows),
           options.container
         );
-        console.log('numRows',numRows)
         i += numRows;
         page++;
-        console.log('iiii',i)
-        console.log('page',page)
         // This recursive function loops through the results by page
         // After it's finished the last page it updates the items
         // and renders a new page.
@@ -129,28 +126,24 @@ sf.Items = Backbone.Collection.extend({
 
           // Add PageInteval to get API Call Interval - 1 hours
           apiCallInterval += pageInterval
-          //console.log('API Interval', apiCallInterval)
           var hours = apiCallInterval / (1000*60*60)
           let minutes = (apiCallInterval / (1000 * 60)).toFixed(1);
-          //console.log('Hours', hours)
-          //console.log('Minutes', minutes)
           options.pagination.find('.currentPage').text(page);
 
           setTimeout(() => {
            
             let toindex = i + numRows;
-            console.log('from '+i+' to '+toindex)
             sf.display.loadSequentially(
               results.slice(i, i + numRows),
               options.container
             );            
             i += numRows;
             page++;
-            console.log('Page', page)
-            console.log('numPages', numPages)
+
+            // Reset array index at end of array lenght.
+            // Start displaying again from first index.
             if(results.length <= toindex)
             {
-              console.log('Reset index again',results.length)
               i = 0;
             }
             if (page < numPages) {
@@ -159,7 +152,7 @@ sf.Items = Backbone.Collection.extend({
 
               if(minutes >= 60)
               {
-                console.log('minutes exist')
+                // Calling API after 1 hours
                 options.pagination.find('.currentPage').text(page);
                 setTimeout(() => {
                   // calls the API again after all the pages have been displayed 
@@ -168,7 +161,6 @@ sf.Items = Backbone.Collection.extend({
               }
               else
               {
-                console.log('last Page call', page)
                 options.pagination.find('.currentPage').text(page);
                 if (page > numPages) page = 1
                 paginate()
