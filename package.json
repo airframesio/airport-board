@@ -13,7 +13,7 @@
     "express": "^4.16.4",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.35",
-    "pug": "^3.0.0"
+    "pug": "^3.0.1"
   },
   "scripts": {
     "start": "node app.js",
